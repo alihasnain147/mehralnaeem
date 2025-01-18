@@ -142,12 +142,12 @@ h6 {
 }
 
 .header .logo {
-  /* line-height: 1; */
+  line-height: 1;
 }
 
 .header .logo img {
-  /* max-height: 159px; */
-  width: 140px;
+  max-height: 159px;
+  /* width: 140px; */
   padding-top: 0% !important;
   margin-top: 0% !important;
   margin-right: 8px;
