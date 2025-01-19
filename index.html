@@ -62,6 +62,8 @@
       <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
 
       <div class="container" data-aos="zoom-out" data-aos-delay="100">
+        <div style="margin-top: 150px;" id="welcome-animation" style="font-size: 1rem;  color: #18D26E !important">
+        </div>
         <h2>Sheikh Mehral Naeem</h2>
         <p>I'm <span class="typed"
             data-typed-items="Ailurophile, Astrophile, Melophile, Selenophile, Autophile, Anthophile, Hadophile, ">Ailurophile</span><span
@@ -71,12 +73,99 @@
           <a href="#"><i class="bi bi-snapchat"></i></a>
           <a href="#"><i class="bi bi-whatsapp"></i></a>
         </div>
+        <div class="greeting-box">
+          <h1 id="greeting"></h1>
+          <p>Hope you're having a wonderful day, Mehraal! 😊</p>
+        </div>
       </div>
 
     </section><!-- /Hero Section -->
+    <style>
+      .greeting-box {
+        border-radius: 10px;
+        padding: 30px 30px 30px 10px;
+      }
 
+      .greeting-box h1 {
+        font-size: 2.5rem;
+      }
+
+      .greeting-box p {
+        font-size: 1.2rem;
+
+      }
+    </style>
+    <script>
+      const welcomeText = document.getElementById('welcome-animation');
+      let text = "Welcome, Mehraal Shah! ❤️";
+      let i = 0;
+
+      function typeEffect() {
+        if (i < text.length) {
+          welcomeText.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeEffect, 100); // Typing speed
+        }
+      }
+
+      typeEffect();
+    </script>
+    <script>
+      // Get current hours
+      const hours = new Date().getHours();
+      let greetingMessage;
+
+      // Set greeting based on custom time schedule
+      if (hours >= 5 && hours < 12) {
+        greetingMessage = "Good Morning, Mehraal! ☀️";
+      } else if (hours >= 12 && hours < 16) {
+        greetingMessage = "Good Afternoon, Mehraal! 🌤️";
+      } else if (hours >= 16 && hours < 19) {
+        greetingMessage = "Good Evening, Mehraal! 🌙";
+      } else {
+        greetingMessage = "Good Night, Mehraal! 🌌";
+      }
+
+      // Display the greeting
+      document.getElementById('greeting').innerText = greetingMessage;
+    </script>
   </main>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 mt-5 mb-5 p-5">
+        <center>
+          <div class="quote-box">
+            <h1 style="color: #18D26E;font-weight: bold;">Daily Inspiration</h1>
+            <p>Here’s a special quote just for you, Mehraal! 😊</p>
+            <marquee style="color: #18D26E;font-weight: bold;" class="marquee" behavior="scroll" direction="left"
+              scrollamount="7" id="daily-quote">
+              Loading your daily quote...
+            </marquee>
+          </div>
+        </center>
+      </div>
+    </div>
+  </div>
+  <script>
+    const quotes = [
+      "Believe in yourself, Mehraal! 🌟",
+      "You are amazing, just the way you are! ❤️",
+      "Keep smiling, it suits you! 😊",
+      "Success is on your way, Mehraal! 💪",
+      "Every day is a new opportunity to shine! ✨",
+      "Dream big, Mehraal! You can achieve anything! 🌈",
+      "You’re stronger than you think, Mehraal! 💖"
+    ];
 
+    // Get today's date as a string (yyyy-mm-dd format)
+    const today = new Date().toISOString().split('T')[0];
+
+    // Hash the date to select a quote (e.g., by using the day part of the date)
+    const quoteIndex = parseInt(today.split('-')[2]) % quotes.length;
+
+    // Set the daily quote based on the date
+    document.getElementById('daily-quote').innerText = quotes[quoteIndex];
+  </script>
   <footer id="footer" class="footer dark-background">
     <div class="container">
       <h3 class="sitename">The Heart Behind the Magic</h3>
