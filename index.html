@@ -130,15 +130,123 @@
       document.getElementById('greeting').innerText = greetingMessage;
     </script>
   </main>
+  <br>
+  <style>
+    .meh-interest {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+
+    @media (max-width: 500px) {
+      .meh-interestimg img {
+        width: 100% !important;
+        height: 50%;
+      }
+
+      .meh-interest {
+        text-align: center;
+      }
+    }
+  </style>
+  <style>
+    hr {
+      border: 0;
+      margin-top: 20px !important;
+      margin-bottom: 20px;
+      height: 5px;
+      background-color: #18D26E;
+    }
+  </style>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-12 mt-2 mb-3">
+        <center>
+          <h1 style="color: #18D26E;">Mehral’s World of Passions🌟</h1>
+        </center>
+      </div>
+      <div class="col- col-lg-6 meh-interest mt-2 ">
+        <div class="">
+          <h1>The Queen of Noodles 🍜</h1>
+          <h4>Happiness Served Hot and Spicy</h4>
+          <p>For Mehraal, noodles are more than just food—they're a passion. Whether it’s a bowl of spicy ramen or a
+            comforting serving of pasta, noodles have a way of making everything feel better. She loves experimenting
+            with new flavors and toppings, always in search of the perfect noodle dish.</p>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 mt-2 meh-interestimg">
+        <center><img src="./assets/img/noodle-lover.jpg" alt="" class="w-75"></center>
+      </div>
+      <hr>
+      <div class="col-12 col-lg-6 mt-2 meh-interestimg">
+        <center><img src="./assets/img/cat-lover.jpg" alt="" class="w-75"></center>
+      </div>
+      <div class="col-12 col-lg-6 meh-interest mt-2">
+        <div class="">
+          <h1>A Cat’s Best Friend 🐾</h1>
+          <h4>Mehraal and Her Feline Fascination</h4>
+          <p>Cats are not just pets for Mehraal; they’re companions, confidants, and sources of endless entertainment.
+            From their curious antics to their soft purrs, every cat brings warmth and joy into her life. She believes
+            every cat has a story to tell, and she’s eager to listen to each one.</p>
+        </div>
+      </div>
+      <hr>
+      <div class="col-12 col-lg-6 meh-interest mt-2">
+        <div class="">
+          <h1>The Rhythm of Life</h1>
+          <h4>Dancing to Her Own Beat</h4>
+          <p>From soothing melodies to upbeat tracks, music is Mehraal's escape. Whether it’s a soulful tune or a lively
+            song, it’s the rhythm that fuels her day and sparks her creativity. She doesn’t just listen to music—she
+            lives it.</p>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 mt-2 meh-interestimg">
+        <center><img src="./assets/img/music-lover.jpg" alt="" class="w-75"></center>
+      </div>
+      <hr>
+      <div class="col-12 col-lg-6 mt-2 meh-interestimg">
+        <center><img src="./assets/img/fashion-lover.jpg" alt="" class="w-75"></center>
+      </div>
+      <div class="col-12 col-lg-6 meh-interest mt-2">
+        <div class="">
+          <h1>A Trendsetter at Heart</h1>
+          <h4>Style That Speaks Volumes</h4>
+          <p>Fashion isn’t just about clothes for Mehraal—it’s about self-expression. She knows how to pair elegance
+            with comfort, turning every outfit into a statement. Her style reflects her vibrant personality.</p>
+        </div>
+      </div>
+      <hr>
+      <div class="col-12 col-lg-6 meh-interest mt-2">
+        <div class="">
+          <h1>Wanderlust Spirit ✈️</h1>
+          <h4>Collecting Memories, One Trip at a Time</h4>
+          <p>For Mehraal, the world is full of endless possibilities. Whether it’s exploring bustling city streets or
+            hiking up peaceful mountain trails, travel opens new chapters in her story. Every place she visits leaves
+            behind memories, and every adventure brings her closer to understanding the beauty of diverse cultures.</p>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 mt-2 meh-interestimg">
+        <center><img src="./assets/img/travel-lover.jpg" alt="" class="w-75"></center>
+      </div>
+    </div>
+  </div>
+  <br>
+  <style>
+    .quote-box {
+      background-color: #0F0F0F;
+      padding: 40px;
+      border-radius: 14px;
+    }
+  </style>
   <div class="container">
     <div class="row">
       <div class="col-lg-12 mt-5 mb-5 p-5">
         <center>
           <div class="quote-box">
-            <h1 style="color: #18D26E;font-weight: bold;">Daily Inspiration</h1>
+            <h1 style=" font-weight: bold;color: #18D26E;">Daily Inspiration</h1>
             <p>Here’s a special quote just for you, Mehraal! 😊</p>
-            <marquee style="color: #18D26E;font-weight: bold;" class="marquee" behavior="scroll" direction="left"
-              scrollamount="5" id="daily-quote">
+            <marquee style="font-weight: bold;" class="marquee" behavior="scroll" direction="left" scrollamount="5"
+              id="daily-quote">
               Loading your daily quote...
             </marquee>
           </div>
