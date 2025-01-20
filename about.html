@@ -57,6 +57,7 @@
 
   <main class="main">
 
+
     <!-- Page Title -->
     <div class="page-title" data-aos="fade">
       <div class="heading">
@@ -74,16 +75,9 @@
           </div>
         </div>
       </div>
-      <nav class="breadcrumbs">
-        <div class="container">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">About</li>
-          </ol>
-        </div>
-      </nav>
     </div><!-- End Page Title -->
-
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- About Section -->
     <section id="about" class="about section">
 
@@ -170,7 +164,153 @@
 
     </section><!-- /Stats Section -->
 
+    <!-- Countdown -->
 
+    <!-- Countdown End -->
+    <br><br><br><br><br>
+    <div class="container-fluid m-0 birthday-ctmehr">
+      <h1>✨ The Countdown Begins! 🎉</h1>
+      <center>
+        <h5>A Journey to Mehraal’s Special Day 🎂</h5>
+        <p>Every second brings us closer to a moment worth celebrating—the day Mehraal brightened the world with her
+          presence. Let’s count down the days, hours, and moments to make her birthday as unforgettable as she is!</p>
+      </center>
+      <div class="row countdown-container">
+        <div class="col-12 col-md-3">
+          <div class="countdown-card">
+            <div class="number" id="days">00</div>
+            <div class="label">Days</div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3">
+          <div class="countdown-card">
+            <div class="number" id="hours">00</div>
+            <div class="label">Hours</div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3">
+          <div class="countdown-card">
+            <div class="number" id="minutes">00</div>
+            <div class="label">Minutes</div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3">
+          <div class="countdown-card">
+            <div class="number" id="seconds">00</div>
+            <div class="label">Seconds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function updateCountdown() {
+        const birthday = new Date(new Date().getFullYear(), 7, 22); // August 22
+        const now = new Date();
+        let timeDifference = birthday - now;
+
+        // If birthday has passed this year, set for next year
+        if (timeDifference < 0) {
+          birthday.setFullYear(birthday.getFullYear() + 1);
+          timeDifference = birthday - now;
+        }
+
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        // Update the UI
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+
+        // Add flip animation class
+        document.querySelectorAll(".number").forEach((el) => {
+          el.classList.add("flip");
+          setTimeout(() => el.classList.remove("flip"), 600);
+        });
+      }
+
+      setInterval(updateCountdown, 1000); // Update every second
+      updateCountdown();
+    </script>
+
+
+    <style>
+      .birthday-ctmehr {
+        background-color: #1A1A1A;
+        padding: 40px;
+      }
+
+      .countdown-container {
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .countdown-card {
+        background: #15B45E;
+        color: #1A1A1A;
+        border-radius: 9px;
+        padding: 24px;
+        text-align: center;
+        height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .countdown-card .number {
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .countdown-card .label {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        margin-top: 5px;
+        font-weight: bolder;
+      }
+
+      /* Flip Animation */
+      .countdown-card.flip .number {
+        animation: flip 0.6s ease-in-out;
+      }
+
+      @keyframes flip {
+        0% {
+          transform: rotateX(0deg);
+        }
+
+        50% {
+          transform: rotateX(180deg);
+        }
+
+        100% {
+          transform: rotateX(0deg);
+        }
+      }
+
+      /* Responsive Layout */
+      @media (min-width: 768px) {
+        .countdown-card {
+          height: 160px;
+        }
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2rem;
+        color: #15B45E;
+      }
+    </style>
+    <br><br><br><br><br>
     <!-- Interests Section -->
     <section id="interests" class="interests section">
 
