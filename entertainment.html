@@ -83,6 +83,189 @@
             </div>
         </div><!-- End Page Title -->
 
+        <style>
+            .recipe-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .recipe-content {
+                text-align: center;
+                padding: 20px;
+                background: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                margin-bottom: 30px;
+            }
+
+            .recipe-btn {
+                background-color: #18D16D;
+                color: white;
+                font-size: 18px;
+                padding: 12px 20px;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+
+            .recipe-btn:hover {
+                background-color: #16c260;
+            }
+
+            .recipe-image {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .recipe-title {
+                font-size: 22px;
+                font-weight: bold;
+                color: #333;
+            }
+
+            .recipe-description {
+                font-size: 18px;
+                color: #555;
+            }
+
+            .guidelines {
+                font-size: 16px;
+                color: #333;
+                margin-top: 15px;
+            }
+
+            .col-lg-6 {
+                margin-bottom: 20px;
+            }
+
+            @media (max-width: 767px) {
+                .recipe-container {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+        </style>
+        <br><br>
+        <div class="container">
+            <h1 class="text-center text-white mb-4">🍜 Random Noodle Recipe Generator 🍜</h1>
+
+            <div class="recipe-container">
+                <!-- Left side: Recipe Generator -->
+                <div class="col-lg-6">
+                    <div class="recipe-content">
+                        <button class="recipe-btn" onclick="generateRecipe()">Generate Random Recipe</button>
+                        <div id="recipeDetails" class="mt-4">
+                            <p id="recipeTitle" class="recipe-title"></p>
+                            <p id="recipeDescription" class="recipe-description"></p>
+                        </div>
+                        <!-- Instructions -->
+                        <div id="guidelines" class="guidelines" style="display: none;">
+                            <p><strong>Guidelines:</strong></p>
+                            <ul id="recipeInstructions">
+                                <!-- Instructions will be inserted here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right side: Image -->
+                <div class="col-lg-6">
+                    <img id="recipeImage" class="recipe-image"
+                        src="https://images.unsplash.com/photo-1588774047202-4c52f4cbb542" alt="Noodle Recipe Image"
+                        style="display: none;">
+
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const recipes = [
+                {
+                    title: 'Spicy Ramen',
+                    description: 'A bowl of spicy ramen with a kick of chili and garlic, topped with boiled eggs and spring onions.',
+                    instructions: [
+                        'Boil the ramen noodles as per package instructions.',
+                        'In a separate pan, heat some oil and sauté garlic and chili paste.',
+                        'Add water or broth to the pan, bring to a boil.',
+                        'Season the broth with soy sauce, sesame oil, and chili flakes.',
+                        'Add the cooked noodles to the broth and stir well.',
+                        'Top with boiled eggs, spring onions, and sesame seeds.',
+                    ],
+                },
+                {
+                    title: 'Vegetable Udon',
+                    description: 'A hearty bowl of udon noodles with sautéed vegetables and a savory soy-based broth.',
+                    instructions: [
+                        'Cook udon noodles according to the package instructions.',
+                        'In a large pan, sauté a mix of vegetables (carrots, mushrooms, broccoli) with some olive oil.',
+                        'In another pan, prepare the broth by mixing soy sauce, vegetable stock, and a little sugar.',
+                        'Add the cooked udon noodles to the pan with the sautéed vegetables.',
+                        'Pour the broth over the noodles and let everything simmer for a few minutes.',
+                        'Garnish with spring onions and sesame seeds.',
+                    ],
+                },
+                {
+                    title: 'Pad Thai',
+                    description: 'A delicious stir-fried noodle dish with tofu, shrimp, peanuts, and a sweet tangy sauce.',
+                    instructions: [
+                        'Cook the rice noodles according to package instructions.',
+                        'In a pan, fry tofu cubes and shrimp until crispy.',
+                        'Prepare the Pad Thai sauce with tamarind paste, fish sauce, sugar, and lime juice.',
+                        'In the same pan, toss the cooked noodles with the sauce and cooked tofu and shrimp.',
+                        'Serve with peanuts, bean sprouts, and fresh cilantro.',
+                    ],
+                },
+                {
+                    title: 'Cold Soba',
+                    description: 'Refreshing cold soba noodles with dipping sauce, garnished with seaweed and scallions.',
+                    instructions: [
+                        'Cook soba noodles as per package instructions, then rinse with cold water.',
+                        'Prepare the dipping sauce by combining soy sauce, mirin, and a bit of dashi.',
+                        'Serve the cold soba noodles with a side of dipping sauce.',
+                        'Top the noodles with sliced scallions, nori seaweed, and a boiled egg.',
+                    ],
+                },
+                {
+                    title: 'Instant Noodles',
+                    description: 'Classic instant noodles cooked with a simple yet tasty broth and seasoning.',
+                    instructions: [
+                        'Boil water according to the instructions on the instant noodle packet.',
+                        'Add the noodle block and seasoning packet to the boiling water.',
+                        'Cook the noodles for 3-4 minutes or until they are soft.',
+                        'Serve with a boiled egg, veggies, or any toppings of your choice.',
+                    ],
+                }
+            ];
+
+            function generateRecipe() {
+                const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
+                // Display Recipe Details
+                document.getElementById('recipeTitle').textContent = randomRecipe.title;
+                document.getElementById('recipeDescription').textContent = randomRecipe.description;
+
+                // Display Recipe Image
+                const imageElement = document.getElementById('recipeImage');
+                imageElement.style.display = 'block';
+
+                // Show Guidelines
+                const guidelinesElement = document.getElementById('guidelines');
+                guidelinesElement.style.display = 'block';
+
+                // Display Recipe Instructions
+                const instructionsList = document.getElementById('recipeInstructions');
+                instructionsList.innerHTML = '';  // Clear any existing instructions
+                randomRecipe.instructions.forEach(instruction => {
+                    const li = document.createElement('li');
+                    li.textContent = instruction;
+                    instructionsList.appendChild(li);
+                });
+            }
+        </script>
+        <br><br>
 
         <div class="container col-12">
             <h2 class="text-center">Mood Tracker</h2>
@@ -193,6 +376,200 @@
                 margin-bottom: 40px;
             }
         </style>
+
+        <br><br>
+        <style>
+            .wish-card {
+                color: #17CC6B;
+                background: #0F0F0F;
+                border-radius: 10px;
+                padding: 20px;
+                margin-bottom: 15px;
+                position: relative;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin: 9px;
+                /* Add some space between cards */
+            }
+
+            .wish-card p {
+                margin-bottom: 40px;
+            }
+
+            .wish-card button {
+                /* background-color: transparent; */
+                border: none;
+                width: 48%;
+                margin: 5px 1%;
+            }
+
+            .wish-card button.edit {
+                color: white;
+                background-color: #f9d342;
+            }
+
+            .wish-card button.delete {
+                color: white;
+                background-color: #d32f2f;
+            }
+
+            /* Responsive Design */
+            .wish-card-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .wish-card-container .col {
+                display: flex;
+                justify-content: center;
+            }
+
+            .button-container {
+                display: flex;
+                justify-content: space-between;
+                /* Align buttons in one row */
+                margin-top: 10px;
+            }
+
+            .addwish-btn {
+                background-color: #17CC6B;
+                color: white;
+                font-weight: bold;
+                width: 200px;
+                padding: 14px;
+            }
+
+            @media (max-width: 576px) {
+                .wish-card-container {
+                    flex-direction: column;
+                }
+
+                .wish-card button {
+                    width: 100%;
+                    /* Full width on smaller screens */
+                }
+            }
+        </style>
+        <div class="container text-center mt-5">
+            <div class="wish-section">
+                <h1 style="color: #17CC6B;">🌟 Wishful Thinking Jar 🌟</h1>
+                <h3>Save your wishes and keep them forever!</h3>
+                <p>Write your wishes below, and they will be saved even if you refresh the page.</p>
+
+                <div class="mb-3">
+                    <textarea id="wishInput" class="form-control" rows="4" placeholder="Write your wish here..."
+                        style="background-color: #0F0F0F;color: white;font-weight: bold; border: none; border: 2px solid #0F0F0F;"></textarea>
+                </div>
+                <button class="btn addwish-btn" onclick="addWish()">Add Wish</button>
+
+                <div id="wishesContainer" class="wish-card-container mt-4">
+                    <!-- Saved wishes will appear here -->
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Load wishes from localStorage on page load
+            window.onload = function () {
+                const savedWishes = JSON.parse(localStorage.getItem('wishes')) || [];
+                const wishesContainer = document.getElementById('wishesContainer');
+                savedWishes.forEach((wish, index) => {
+                    const wishCard = createWishCard(wish, index);
+                    wishesContainer.appendChild(wishCard);
+                });
+            };
+
+            function addWish() {
+                const wishInput = document.getElementById('wishInput');
+                const wish = wishInput.value.trim();
+                if (wish === '') return;
+
+                // Save the new wish in localStorage
+                const savedWishes = JSON.parse(localStorage.getItem('wishes')) || [];
+                savedWishes.push(wish);
+                localStorage.setItem('wishes', JSON.stringify(savedWishes));
+
+                // Display the new wish
+                const wishesContainer = document.getElementById('wishesContainer');
+                const wishCard = createWishCard(wish, savedWishes.length - 1);
+                wishesContainer.appendChild(wishCard);
+
+                // Clear the input
+                wishInput.value = '';
+            }
+
+            function createWishCard(wish, index) {
+                const wishCard = document.createElement('div');
+                wishCard.className = 'col-12 col-sm-6 col-md-4 col-lg-3'; // Responsive columns
+
+                const card = document.createElement('div');
+                card.className = 'wish-card';
+
+                const wishText = document.createElement('p');
+                wishText.textContent = wish;
+
+                // Create Edit button
+                const editButton = document.createElement('button');
+                editButton.className = 'edit btn';
+                editButton.innerHTML = '<i class="bi bi-pencil-square"></i>'; // Bootstrap Icon for edit
+                editButton.onclick = () => editWish(index);
+
+                // Create Delete button
+                const deleteButton = document.createElement('button');
+                deleteButton.className = 'delete btn';
+                deleteButton.innerHTML = '<i class="bi bi-x-circle"></i>'; // Bootstrap Icon for delete
+                deleteButton.onclick = () => deleteWish(index);
+
+                const buttonContainer = document.createElement('div');
+                buttonContainer.className = 'button-container';
+
+                buttonContainer.appendChild(editButton);
+                buttonContainer.appendChild(deleteButton);
+
+                card.appendChild(wishText);
+                card.appendChild(buttonContainer);
+                wishCard.appendChild(card);
+
+                return wishCard;
+            }
+
+            function editWish(index) {
+                const savedWishes = JSON.parse(localStorage.getItem('wishes')) || [];
+                const newWish = prompt('Edit your wish:', savedWishes[index]);
+                if (newWish !== null && newWish.trim() !== '') {
+                    savedWishes[index] = newWish.trim();
+                    localStorage.setItem('wishes', JSON.stringify(savedWishes));
+
+                    // Reload wishes to reflect the change
+                    reloadWishes();
+                }
+            }
+
+            function deleteWish(index) {
+                const savedWishes = JSON.parse(localStorage.getItem('wishes')) || [];
+                savedWishes.splice(index, 1);
+                localStorage.setItem('wishes', JSON.stringify(savedWishes));
+
+                // Reload wishes to reflect the change
+                reloadWishes();
+            }
+
+            function reloadWishes() {
+                const savedWishes = JSON.parse(localStorage.getItem('wishes')) || [];
+                const wishesContainer = document.getElementById('wishesContainer');
+                wishesContainer.innerHTML = ''; // Clear current wishes
+
+                savedWishes.forEach((wish, index) => {
+                    const wishCard = createWishCard(wish, index);
+                    wishesContainer.appendChild(wishCard);
+                });
+            }
+        </script>
+        <br><br>
+
 
     </main>
 
