@@ -1480,3 +1480,10 @@ section,
 .contact .php-email-form button[type="submit"]:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
+
+@media (max-width: 500px) {
+  .meh-interest {
+    margin-top: 55px !important;
+    margin-bottom: 25px !important;
+  }
+}
