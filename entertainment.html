@@ -84,19 +84,12 @@
         </div><!-- End Page Title -->
 
         <style>
-            .recipe-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .recipe-content {
-                text-align: center;
-                padding: 20px;
+            .recipe-generator {
                 background: #fff;
-                border-radius: 10px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                margin-bottom: 30px;
+                padding: 20px;
+                border-radius: 15px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                text-align: center;
             }
 
             .recipe-btn {
@@ -104,80 +97,56 @@
                 color: white;
                 font-size: 18px;
                 padding: 12px 20px;
-                border-radius: 5px;
+                border-radius: 8px;
                 border: none;
                 cursor: pointer;
                 transition: all 0.3s;
             }
 
             .recipe-btn:hover {
-                background-color: #16c260;
-            }
-
-            .recipe-image {
-                max-width: 100%;
-                height: auto;
-                border-radius: 10px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                background-color: #13b257;
             }
 
             .recipe-title {
-                font-size: 22px;
+                font-size: 24px;
                 font-weight: bold;
-                color: #333;
-            }
-
-            .recipe-description {
-                font-size: 18px;
-                color: #555;
-            }
-
-            .guidelines {
-                font-size: 16px;
                 color: #333;
                 margin-top: 15px;
             }
 
-            .col-lg-6 {
-                margin-bottom: 20px;
+            .recipe-steps {
+                font-size: 16px;
+                color: #555;
+                margin-top: 10px;
+                line-height: 1.6;
             }
 
-            @media (max-width: 767px) {
-                .recipe-container {
-                    flex-direction: column;
-                    align-items: center;
-                }
+            .recipe-image {
+                max-width: 100%;
+                border-radius: 15px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             }
         </style>
         <br><br>
+
         <div class="container">
             <h1 class="text-center text-white mb-4">🍜 Random Noodle Recipe Generator 🍜</h1>
 
-            <div class="recipe-container">
+            <div class="row">
                 <!-- Left side: Recipe Generator -->
-                <div class="col-lg-6">
-                    <div class="recipe-content">
-                        <button class="recipe-btn" onclick="generateRecipe()">Generate Random Recipe</button>
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <div class="recipe-generator">
+                        <button class="recipe-btn" onclick="generateRecipe()">Generate Recipe</button>
                         <div id="recipeDetails" class="mt-4">
                             <p id="recipeTitle" class="recipe-title"></p>
-                            <p id="recipeDescription" class="recipe-description"></p>
-                        </div>
-                        <!-- Instructions -->
-                        <div id="guidelines" class="guidelines" style="display: none;">
-                            <p><strong>Guidelines:</strong></p>
-                            <ul id="recipeInstructions">
-                                <!-- Instructions will be inserted here -->
-                            </ul>
+                            <p id="recipeSteps" class="recipe-steps"></p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right side: Image -->
-                <div class="col-lg-6">
-                    <img id="recipeImage" class="recipe-image"
-                        src="https://images.unsplash.com/photo-1588774047202-4c52f4cbb542" alt="Noodle Recipe Image"
-                        style="display: none;">
-
+                <div class="col-lg-6 col-md-12">
+                    <img src="./assets/img/nooodels.jpg">
                 </div>
             </div>
         </div>
@@ -186,88 +155,49 @@
             const recipes = [
                 {
                     title: 'Spicy Ramen',
-                    description: 'A bowl of spicy ramen with a kick of chili and garlic, topped with boiled eggs and spring onions.',
-                    instructions: [
-                        'Boil the ramen noodles as per package instructions.',
-                        'In a separate pan, heat some oil and sauté garlic and chili paste.',
-                        'Add water or broth to the pan, bring to a boil.',
-                        'Season the broth with soy sauce, sesame oil, and chili flakes.',
-                        'Add the cooked noodles to the broth and stir well.',
-                        'Top with boiled eggs, spring onions, and sesame seeds.',
-                    ],
+                    steps: `1. Boil the noodles in water for 3 minutes. <br>
+                            2. In a pan, sauté garlic and chili flakes in oil. <br>
+                            3. Add noodles, soy sauce, and a splash of broth. Stir well. <br>
+                            4. Top with a boiled egg and spring onions.`,
                 },
                 {
-                    title: 'Vegetable Udon',
-                    description: 'A hearty bowl of udon noodles with sautéed vegetables and a savory soy-based broth.',
-                    instructions: [
-                        'Cook udon noodles according to the package instructions.',
-                        'In a large pan, sauté a mix of vegetables (carrots, mushrooms, broccoli) with some olive oil.',
-                        'In another pan, prepare the broth by mixing soy sauce, vegetable stock, and a little sugar.',
-                        'Add the cooked udon noodles to the pan with the sautéed vegetables.',
-                        'Pour the broth over the noodles and let everything simmer for a few minutes.',
-                        'Garnish with spring onions and sesame seeds.',
-                    ],
+                    title: 'Vegetable Stir-Fry Noodles',
+                    steps: `1. Cook noodles as per instructions. <br>
+                            2. Stir-fry chopped vegetables (carrots, broccoli, bell peppers) in a hot pan. <br>
+                            3. Add noodles and soy sauce. Toss until combined. <br>
+                            4. Serve hot with sesame seeds.`,
                 },
                 {
-                    title: 'Pad Thai',
-                    description: 'A delicious stir-fried noodle dish with tofu, shrimp, peanuts, and a sweet tangy sauce.',
-                    instructions: [
-                        'Cook the rice noodles according to package instructions.',
-                        'In a pan, fry tofu cubes and shrimp until crispy.',
-                        'Prepare the Pad Thai sauce with tamarind paste, fish sauce, sugar, and lime juice.',
-                        'In the same pan, toss the cooked noodles with the sauce and cooked tofu and shrimp.',
-                        'Serve with peanuts, bean sprouts, and fresh cilantro.',
-                    ],
+                    title: 'Classic Pad Thai',
+                    steps: `1. Cook flat noodles until tender. <br>
+                            2. In a pan, scramble eggs, then add tofu or chicken. <br>
+                            3. Mix tamarind paste, fish sauce, and sugar, then add noodles. <br>
+                            4. Garnish with peanuts and lime wedges.`,
                 },
                 {
-                    title: 'Cold Soba',
-                    description: 'Refreshing cold soba noodles with dipping sauce, garnished with seaweed and scallions.',
-                    instructions: [
-                        'Cook soba noodles as per package instructions, then rinse with cold water.',
-                        'Prepare the dipping sauce by combining soy sauce, mirin, and a bit of dashi.',
-                        'Serve the cold soba noodles with a side of dipping sauce.',
-                        'Top the noodles with sliced scallions, nori seaweed, and a boiled egg.',
-                    ],
+                    title: 'Cold Soba Noodles',
+                    steps: `1. Cook soba noodles and rinse with cold water. <br>
+                            2. Prepare a dipping sauce with soy sauce, mirin, and dashi. <br>
+                            3. Serve noodles cold with sauce on the side. <br>
+                            4. Garnish with seaweed and green onions.`,
                 },
                 {
-                    title: 'Instant Noodles',
-                    description: 'Classic instant noodles cooked with a simple yet tasty broth and seasoning.',
-                    instructions: [
-                        'Boil water according to the instructions on the instant noodle packet.',
-                        'Add the noodle block and seasoning packet to the boiling water.',
-                        'Cook the noodles for 3-4 minutes or until they are soft.',
-                        'Serve with a boiled egg, veggies, or any toppings of your choice.',
-                    ],
+                    title: 'Instant Noodle Delight',
+                    steps: `1. Cook instant noodles in boiling water with seasoning. <br>
+                            2. Add a poached egg, some chopped green onions, and hot sauce. <br>
+                            3. Enjoy a quick and delicious meal!`,
                 }
             ];
 
             function generateRecipe() {
                 const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
-                // Display Recipe Details
-                document.getElementById('recipeTitle').textContent = randomRecipe.title;
-                document.getElementById('recipeDescription').textContent = randomRecipe.description;
-
-                // Display Recipe Image
-                const imageElement = document.getElementById('recipeImage');
-                imageElement.style.display = 'block';
-
-                // Show Guidelines
-                const guidelinesElement = document.getElementById('guidelines');
-                guidelinesElement.style.display = 'block';
-
-                // Display Recipe Instructions
-                const instructionsList = document.getElementById('recipeInstructions');
-                instructionsList.innerHTML = '';  // Clear any existing instructions
-                randomRecipe.instructions.forEach(instruction => {
-                    const li = document.createElement('li');
-                    li.textContent = instruction;
-                    instructionsList.appendChild(li);
-                });
+                document.getElementById('recipeTitle').innerHTML = randomRecipe.title;
+                document.getElementById('recipeSteps').innerHTML = randomRecipe.steps;
             }
         </script>
         <br><br>
 
-        <div class="container col-12">
+        <div class=" container col-12">
             <h2 class="text-center">Mood Tracker</h2>
             <p class="text-center">Select your mood for today!</p>
 
