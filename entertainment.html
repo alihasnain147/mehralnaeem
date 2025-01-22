@@ -310,7 +310,153 @@
                 margin-bottom: 40px;
             }
         </style>
+        <br><br>
+        <style>
+            .calendar-container {
+                padding: 40px 15px;
+            }
 
+            .calendar-heading {
+                color: #18D26E;
+                text-align: center;
+                margin-bottom: 30px;
+                font-size: 2.5rem;
+                font-weight: bold;
+            }
+
+            .calendar-subheading {
+                text-align: center;
+                font-size: 1rem;
+                color: #555;
+                font-weight: bold;
+                margin-bottom: 30px;
+            }
+
+            .day-card {
+                background: #0F0F0F;
+                border-radius: 10px;
+                padding: 15px;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+
+            .day-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            }
+
+            .day-number {
+                font-size: 2rem;
+                font-weight: bold;
+                color: white;
+                margin-bottom: 10px;
+            }
+
+            .day-description {
+                font-size: 1.1rem;
+                font-weight: bold;
+                color: #18D26E;
+            }
+
+            .day-details {
+                font-size: 0.95rem;
+                color: #666;
+                margin-top: 5px;
+            }
+
+            /* Remove hover effects for mobile */
+            @media (max-width: 768px) {
+                .day-details {
+                    display: block;
+                }
+
+                .day-card:hover {
+                    transform: none;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                }
+            }
+        </style>
+        <div class="container calendar-container">
+            <h1 class="calendar-heading">A Day in Mehraal’s Life</h1>
+            <p class="calendar-subheading">A glimpse into Mehraal’s world—filled with passions, thoughts, and
+                adventures.</p>
+
+            <div class="row g-3">
+                <!-- Day 1 -->
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="day-card">
+                        <div class="day-number">1</div>
+                        <div class="day-description">The Queen of Noodles 🍜</div>
+                        <div class="day-details">Mehraal's favorite comfort food is a steaming bowl of noodles.</div>
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="day-card">
+                        <div class="day-number">2</div>
+                        <div class="day-description">A Cat’s Best Friend 🐾</div>
+                        <div class="day-details">Mehraal loves cats and finds joy in their playful antics.</div>
+                    </div>
+                </div>
+
+                <!-- Day 3 -->
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="day-card">
+                        <div class="day-number">3</div>
+                        <div class="day-description">The Rhythm of Life 🎵</div>
+                        <div class="day-details">Music is her escape, a rhythm that fuels her creativity.</div>
+                    </div>
+                </div>
+
+                <!-- Day 4 -->
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="day-card">
+                        <div class="day-number">4</div>
+                        <div class="day-description">Fashion Diva 💃</div>
+                        <div class="day-details">Her unique style is a reflection of her bold personality.</div>
+                    </div>
+                </div>
+
+                <!-- Day 5 -->
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="day-card">
+                        <div class="day-number">5</div>
+                        <div class="day-description">Wanderlust Spirit ✈️</div>
+                        <div class="day-details">Traveling the world is her dream and source of inspiration.</div>
+                    </div>
+                </div>
+
+                <!-- Day 6 -->
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="day-card">
+                        <div class="day-number">6</div>
+                        <div class="day-description">Foodie at Heart 🍴</div>
+                        <div class="day-details">Exploring new cuisines is her guilty pleasure.</div>
+                    </div>
+                </div>
+
+                <!-- Day 7 -->
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="day-card">
+                        <div class="day-number">7</div>
+                        <div class="day-description">Bookworm 📚</div>
+                        <div class="day-details">A quiet corner and a good book make her day perfect.</div>
+                    </div>
+                </div>
+
+                <!-- Day 8 -->
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="day-card">
+                        <div class="day-number">8</div>
+                        <div class="day-description">Creative Spirit 🎨</div>
+                        <div class="day-details">Drawing and crafting let her inner artist shine.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
         <br><br>
         <style>
             .wish-card {
